@@ -23,3 +23,12 @@ def password_add(request):
         except Exception as err:
             print('Error: ', err)
     return render(request, 'entry/password_add.html')
+
+
+def password_delete(request, id):
+    if request.method == 'GET':
+        print("Se recibió una solicitud POST")
+        entry = Entry.objects.filter(id=id)
+        entry.delete()
+        return redirect('/')
+    return redirect('password_list')
