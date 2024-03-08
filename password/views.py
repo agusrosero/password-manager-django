@@ -27,7 +27,6 @@ def password_add(request):
 
 def password_delete(request, id):
     if request.method == 'GET':
-        print("Se recibió una solicitud POST")
         entry = Entry.objects.filter(id=id)
         entry.delete()
         return redirect('/')
