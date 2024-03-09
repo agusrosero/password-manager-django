@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Entry
+from .forms import EntryForm
 
 
 def password_list(request):
@@ -31,3 +32,15 @@ def password_delete(request, id):
         entry.delete()
         return redirect('/')
     return redirect('password_list')
+
+
+def password_update(request, id):
+    entry = Entry.objects.get(id=id)
+    if request.method == 'POST':
+        form = EntryForm(request.POST, instance=entry)
+        if form.is_valid():
+            form.save()
+            redirect('password_list')
+    else:
+        form = EntryForm(instance=entry)
+    return render(request, 'entry/password_update.html', {'form': form})

@@ -7,4 +7,6 @@ urlpatterns = [
     path('add_password/', views.password_add, name='password_add'),
     path('password_delete/<int:id>/',
          views.password_delete, name='password_delete'),
+    path('password_update/<int:id>/',
+         views.password_update, name='password_update'),
 ]
