@@ -5,9 +5,17 @@
 <div class="container col-md-4 py-5">
     <div class="row">
         <h1 class="display-5 text-center">Register</h1>
-
         <form method="POST">
             {% csrf_token %}
+
+            {% for message in messages %}
+            {% if message %}
+            <div class="alert alert-warning" role="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" class="form-control" required />

@@ -10,6 +10,3 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.name
-
-    def hidden_password(self):
-        return '*' * len(self.password)

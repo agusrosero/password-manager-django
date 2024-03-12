@@ -14,6 +14,9 @@ def sign_up(request):
             login(request, user)
             messages.success(request, 'Registro exitoso!')
             return redirect('/')
+        else:
+            messages.warning(
+                request, 'Error en el registro, intentelo de nuevo.')
     else:
         form = SignUpForm()
     return render(request, 'snippets/sign_up.html', {'form': form})
